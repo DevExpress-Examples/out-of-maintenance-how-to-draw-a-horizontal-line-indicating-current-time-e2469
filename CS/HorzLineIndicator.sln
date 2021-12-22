@@ -1,6 +1,8 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalLineIndicator", "HorzLineIndicator\HorzLineIndicator.csproj", "{07330DED-CEAA-4A51-8691-D40DA83CCF36}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorzLineIndicator", "HorzLineIndicator\HorzLineIndicator.csproj", "{07330DED-CEAA-4A51-8691-D40DA83CCF36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,5 +17,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C7EC5D9-597A-4C19-8E16-CD3F6A2D2408}
 	EndGlobalSection
 EndGlobal
