@@ -26,12 +26,12 @@ Namespace HorzLineIndicator
         ''' </summary>
         Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
-            Dim timeRuler1 As DevExpress.XtraScheduler.TimeRuler = New DevExpress.XtraScheduler.TimeRuler()
-            Dim timeRuler2 As DevExpress.XtraScheduler.TimeRuler = New DevExpress.XtraScheduler.TimeRuler()
+            Dim timeRuler1 As New DevExpress.XtraScheduler.TimeRuler()
+            Dim timeRuler2 As New DevExpress.XtraScheduler.TimeRuler()
             Me.schedulerControl1 = New DevExpress.XtraScheduler.SchedulerControl()
             Me.schedulerDataStorage1 = New DevExpress.XtraScheduler.SchedulerDataStorage(Me.components)
-            CType((Me.schedulerControl1), System.ComponentModel.ISupportInitialize).BeginInit()
-            CType((Me.schedulerDataStorage1), System.ComponentModel.ISupportInitialize).BeginInit()
+CType(Me.schedulerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.schedulerDataStorage1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             ' 
             ' schedulerControl1
@@ -41,7 +41,7 @@ Namespace HorzLineIndicator
             Me.schedulerControl1.Location = New System.Drawing.Point(0, 0)
             Me.schedulerControl1.Name = "schedulerControl1"
             Me.schedulerControl1.Size = New System.Drawing.Size(624, 389)
-            Me.schedulerControl1.Start = New System.DateTime(2010, 9, 2, 0, 0, 0, 0)
+Me.schedulerControl1.Start = New Date(2010, 9, 2, 0, 0, 0, 0)
             Me.schedulerControl1.TabIndex = 0
             Me.schedulerControl1.Text = "schedulerControl1"
             Me.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1)
@@ -56,7 +56,7 @@ Namespace HorzLineIndicator
             ' 
             ' Form1
             ' 
-            Me.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)
+            Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.ClientSize = New System.Drawing.Size(624, 389)
             Me.Controls.Add(Me.schedulerControl1)
@@ -65,11 +65,13 @@ Namespace HorzLineIndicator
             CType((Me.schedulerControl1), System.ComponentModel.ISupportInitialize).EndInit()
             CType((Me.schedulerDataStorage1), System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
+
         End Sub
 
 #End Region
-        Private schedulerControl1 As DevExpress.XtraScheduler.SchedulerControl
 
+
+        Private schedulerControl1 As DevExpress.XtraScheduler.SchedulerControl
         Private schedulerDataStorage1 As DevExpress.XtraScheduler.SchedulerDataStorage
     End Class
 End Namespace
