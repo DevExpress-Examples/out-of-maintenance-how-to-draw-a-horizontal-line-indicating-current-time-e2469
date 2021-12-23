@@ -30,7 +30,7 @@ Namespace HorzLineIndicator
             Dim timeRuler2 As New DevExpress.XtraScheduler.TimeRuler()
             Me.schedulerControl1 = New DevExpress.XtraScheduler.SchedulerControl()
             Me.schedulerDataStorage1 = New DevExpress.XtraScheduler.SchedulerDataStorage(Me.components)
-            CType(Me.schedulerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+CType(Me.schedulerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.schedulerDataStorage1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             ' 
@@ -41,7 +41,7 @@ Namespace HorzLineIndicator
             Me.schedulerControl1.Location = New System.Drawing.Point(0, 0)
             Me.schedulerControl1.Name = "schedulerControl1"
             Me.schedulerControl1.Size = New System.Drawing.Size(624, 389)
-            Me.schedulerControl1.Start = New Date(2010, 9, 2, 0, 0, 0, 0)
+Me.schedulerControl1.Start = New Date(2010, 9, 2, 0, 0, 0, 0)
             Me.schedulerControl1.TabIndex = 0
             Me.schedulerControl1.Text = "schedulerControl1"
             Me.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1)
@@ -62,13 +62,14 @@ Namespace HorzLineIndicator
             Me.Controls.Add(Me.schedulerControl1)
             Me.Name = "Form1"
             Me.Text = "Form1"
-            CType(Me.schedulerControl1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.schedulerDataStorage1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.schedulerControl1), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.schedulerDataStorage1), System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub
 
 #End Region
+
 
         Private schedulerControl1 As DevExpress.XtraScheduler.SchedulerControl
         Private schedulerDataStorage1 As DevExpress.XtraScheduler.SchedulerDataStorage
