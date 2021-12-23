@@ -12,33 +12,34 @@ Namespace HorzLineIndicator
 
         Public Sub New()
             InitializeComponent()
+            textBrush = Brushes.Red
             schedulerControl1.DayView.DayCount = 3
             schedulerControl1.Services.DateTimeNavigation.GoToToday()
             schedulerControl1.DayView.TopRowTime = New TimeSpan(Date.Now.Hour - 1, 0, 0)
+            AddHandler schedulerControl1.CustomDrawTimeIndicator, AddressOf SchedulerControl1_CustomDrawTimeIndicator
         End Sub
 
-        Private Sub schedulerControl1_CustomDrawTimeCell(ByVal sender As Object, ByVal e As CustomDrawObjectEventArgs)
-            Dim viewType As SchedulerViewType = CType(sender, SchedulerControl).ActiveViewType
-            ' Draw a line in the Day and WorkWeek views only. 
-            Dim drawHorzLine As Boolean = viewType = SchedulerViewType.Day OrElse viewType = SchedulerViewType.WorkWeek
-            If Not drawHorzLine Then Return
-            Dim interval As TimeInterval = CType(e.ObjectInfo, TimeCell).Interval
-            Dim now As Date = interval.Start.Date + Date.Now.TimeOfDay
-            Dim nowRect As Rectangle = Rectangle.Empty
-            ' For each timecell drawn check whether the current time falls in its interval.
-            If interval.Contains(now) Then
-                e.DrawDefault()
-                Dim rect As Rectangle = e.Bounds
-                nowRect = rect
-                ' Calculate offset from the timecell's top.
-                Dim nowOffset As TimeSpan = now.TimeOfDay - interval.Start.TimeOfDay
-                Dim offsetRatio As Single = nowOffset.Ticks / CSng(interval.Duration.Ticks)
-                nowRect.Y += CInt(rect.Height * offsetRatio)
-                ' Set the line thickness.
-                nowRect.Height = 1
-                e.Cache.FillRectangle(Color.Red, nowRect)
-                e.Handled = True
-            End If
+        Private textBrush As Brush
+
+        Private Sub SchedulerControl1_CustomDrawTimeIndicator(ByVal sender As Object, ByVal e As CustomDrawObjectEventArgs)
+            Dim info As TimeIndicatorViewInfo = TryCast(e.ObjectInfo, TimeIndicatorViewInfo)
+            Dim scheduler As SchedulerControl = TryCast(sender, SchedulerControl)
+            e.DrawDefault()
+            For Each item In info.Items
+                Dim timeIndicatorItem As HorizontalTimeIndicatorCircleItem = TryCast(item, HorizontalTimeIndicatorCircleItem)
+                If timeIndicatorItem IsNot Nothing Then
+                    Dim boundsText As Rectangle = Rectangle.Empty
+                    If TypeOf scheduler.ActiveView Is DayView Then
+                        boundsText = Rectangle.Inflate(New Rectangle(item.Bounds.X + 5, item.Bounds.Y - 3, scheduler.ActiveView.ViewInfo.Bounds.Width - 5, 10), 0, 5)
+                        boundsText.Offset((CInt(e.Graphics.ClipBounds.Width) \ 2), -10)
+                    End If
+
+                    e.Cache.DrawString(info.Interval.Start.ToString(), scheduler.Appearance.HeaderCaption.GetFont(), textBrush, boundsText, scheduler.Appearance.HeaderCaption.GetStringFormat())
+                    e.Cache.FillRectangle(textBrush, New Rectangle(item.Bounds.X + 5, item.Bounds.Y, scheduler.ActiveView.ViewInfo.Bounds.Width - 5, 2))
+                End If
+            Next
+
+            e.Handled = True
         End Sub
     End Class
 End Namespace
